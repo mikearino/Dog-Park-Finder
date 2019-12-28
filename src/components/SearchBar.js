@@ -9,9 +9,10 @@ const SearchScreen = () => {
       <TextInput
         autoCapitalize="none"
         autoCorrect={false}
+        placeholder="Find a Trail"
         placeholderTextColor="yellow"
         selectionColor="blue"
-      />
+      ></TextInput>
     </View>
   );
 };
