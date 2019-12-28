@@ -7,6 +7,7 @@ const SearchScreen = () => {
 
   return (
     <View>
+      <Text>{keyword}</Text>
       <SearchBar keyword={keyword} onKeywordChange={setKeyword} />
     </View>
   );
