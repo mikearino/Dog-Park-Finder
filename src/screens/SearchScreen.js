@@ -8,7 +8,13 @@ const SearchScreen = () => {
   return (
     <View>
       <Text>{keyword}</Text>
-      <SearchBar keyword={keyword} onKeywordChange={setKeyword} />
+      <SearchBar
+        keyword={keyword}
+        onKeywordChange={setKeyword}
+        onKeywordSubmit={() => {
+          console.log("submitted");
+        }}
+      />
     </View>
   );
 };

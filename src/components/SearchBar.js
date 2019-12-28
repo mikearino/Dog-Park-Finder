@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, TextInput, StyleSheet } from "react-native";
 import { Foundation } from "@expo/vector-icons";
 
-const SearchScreen = ({ keyword, onKeywordChange }) => {
+const SearchScreen = ({ keyword, onKeywordChange, onKeywordSubmit }) => {
   return (
     <View style={styles.bar}>
       <Foundation style={styles.iconStyle} name="trees" size={30} />
@@ -14,6 +14,7 @@ const SearchScreen = ({ keyword, onKeywordChange }) => {
         placeholderTextColor="green"
         selectionColor="blue"
         onChangeText={onKeywordChange}
+        onEndEditing={onKeywordSubmit}
         value={keyword}
       ></TextInput>
     </View>
