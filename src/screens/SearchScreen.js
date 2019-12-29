@@ -17,7 +17,7 @@ const SearchScreen = () => {
   console.log(results);
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <SearchBar
         keyword={keyword}
         onKeywordChange={setKeyword}
