@@ -5,20 +5,24 @@ export default () => {
   const [results, setResults] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const searchApi = async () => {
+  const searchApi = async keyword => {
+    console.log("hi there");
     try {
       const response = await yelp.get("/search", {
         params: {
           limit: 50,
-          term,
-          categories: "dog_parks"
+          term: "dog parks",
+          // categories: "dog_parks",
+          location: keyword
         }
       });
       setResults(response.data.businesses);
     } catch (err) {
-      setErrorMessage("Something went wrong.");
+      setErrorMessage("Something went wrong");
     }
   };
+
+  // call search api when component is first renderedd
 
   useEffect(() => {
     searchApi("portland");

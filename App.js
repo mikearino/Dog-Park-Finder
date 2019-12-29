@@ -9,7 +9,7 @@ const navigator = createStackNavigator(
   {
     initialRouteName: "Search",
     defaultNavigationOptions: {
-      title: "Trail Finder"
+      title: "Dog Park Finder"
     }
   }
 );
