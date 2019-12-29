@@ -8,10 +8,13 @@ const SearchScreen = () => {
   const [keyword, setKeyword] = useState("");
   const [searchApi, results, errorMessage] = useResults();
 
-  const filterResultsByRating = rating => {
+  const filterResultsByRating = (rating, rating2) => {
     return results.filter(result => {
-      // return rating <= result.rating ? result.rating : null;
-      return result.rating === rating;
+      if (result.rating === rating) {
+        return result.rating;
+      } else if (result.rating === rating2) {
+        return result.rating;
+      }
     });
   };
   console.log(results);
@@ -27,10 +30,13 @@ const SearchScreen = () => {
       <ScrollView>
         <ResultsList
           results={filterResultsByRating(5)}
-          title="Great Dog Park"
+          title="Awesome Dog Park"
         />
-        <ResultsList results={filterResultsByRating(4)} title="Good Dog Park" />
-        <ResultsList results={filterResultsByRating(3.5)} title="Skip It" />
+        <ResultsList
+          results={filterResultsByRating(4, 4.5)}
+          title="Good Dog Park"
+        />
+        <ResultsList results={filterResultsByRating(3, 3.5)} title="Skip It" />
       </ScrollView>
     </>
   );
