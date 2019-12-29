@@ -10,7 +10,7 @@ const SearchScreen = ({ keyword, onKeywordChange, onKeywordSubmit }) => {
         style={styles.inputStyle}
         autoCapitalize="none"
         autoCorrect={false}
-        placeholder="Find a Trail"
+        placeholder="Enter Your City"
         placeholderTextColor="green"
         selectionColor="blue"
         onChangeText={onKeywordChange}

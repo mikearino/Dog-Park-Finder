@@ -1,24 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
 import SearchBar from "../components/SearchBar";
-import yelp from "../components/api/Yelp";
+import yelp from "../api/yelp";
+import useResults from "../hooks/useResults";
 
 const SearchScreen = () => {
   const [keyword, setKeyword] = useState("");
-  const [results, setResults] = useState([]);
-  const searchApi = () => {
-    yelp.get("/");
-  };
-
+  const [searchApi, results, errorMessage] = useResults();
   return (
     <View>
       <Text>{keyword}</Text>
       <SearchBar
         keyword={keyword}
         onKeywordChange={setKeyword}
-        onKeywordSubmit={() => {
-          console.log("submitted");
-        }}
+        onKeywordSubmit={() => searchApi(keyword)}
       />
     </View>
   );
