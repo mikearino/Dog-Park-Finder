@@ -38,7 +38,9 @@ const ResultsShowScreen = ({ navigation }) => {
           )
         }
       >
-        <Text>{result.location.display_address}</Text>
+        <Text style={styles.address}>
+          {result.location.display_address.join(" ")}
+        </Text>
       </TouchableOpacity>
       <FlatList
         data={result.photos}
@@ -63,6 +65,9 @@ const styles = StyleSheet.create({
     width: 290,
     borderRadius: 5,
     marginVertical: 10
+  },
+  address: {
+    color: "blue"
   }
 });
 
