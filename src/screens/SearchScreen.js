@@ -17,14 +17,13 @@ const SearchScreen = () => {
   console.log(results);
 
   return (
-    <View style={{ flex: 1 }}>
+    <>
       <SearchBar
         keyword={keyword}
         onKeywordChange={setKeyword}
         onKeywordSubmit={() => searchApi(keyword)}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <Text>We have found {results.length} results</Text>
       <ScrollView>
         <ResultsList
           results={filterResultsByRating(5)}
@@ -33,7 +32,7 @@ const SearchScreen = () => {
         <ResultsList results={filterResultsByRating(4)} title="Good Dog Park" />
         <ResultsList results={filterResultsByRating(3.5)} title="Skip It" />
       </ScrollView>
-    </View>
+    </>
   );
 };
 
