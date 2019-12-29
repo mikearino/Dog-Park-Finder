@@ -1,11 +1,15 @@
 import React from "react";
 import { Text, View, TextInput, StyleSheet } from "react-native";
-import { Foundation } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const SearchScreen = ({ keyword, onKeywordChange, onKeywordSubmit }) => {
   return (
     <View style={styles.bar}>
-      <Foundation style={styles.iconStyle} name="trees" size={30} />
+      <MaterialCommunityIcons
+        style={styles.iconStyle}
+        name="dog-side"
+        size={30}
+      />
       <TextInput
         style={styles.inputStyle}
         autoCapitalize="none"
@@ -33,9 +37,9 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   iconStyle: {
-    fontSize: 35,
+    fontSize: 40,
     alignSelf: "center",
-    marginHorizontal: 15
+    marginHorizontal: 10
   },
   inputStyle: {
     flex: 1,
