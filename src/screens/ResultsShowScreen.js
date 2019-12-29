@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, FlatList, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Linking
+} from "react-native";
 import yelp from "../api/yelp";
 
 const ResultsShowScreen = ({ navigation }) => {
@@ -22,10 +31,15 @@ const ResultsShowScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.nameStyle}>{result.name}</Text>
-      <Text>
-        {result.location.display_address}
-        {}
-      </Text>
+      <TouchableOpacity
+        onPress={() =>
+          Linking.openURL(
+            `maps://app?saddr=100+101&daddr=${result.coordinates.latitude}+${result.coordinates.longitude}`
+          )
+        }
+      >
+        <Text>{result.location.display_address}</Text>
+      </TouchableOpacity>
       <FlatList
         data={result.photos}
         keyExtractor={photo => photo}
