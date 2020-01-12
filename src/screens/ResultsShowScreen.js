@@ -5,7 +5,7 @@ import {
   StyleSheet,
   FlatList,
   Image,
-  ScrollView,
+  SafeAreaView,
   TouchableOpacity,
   Linking
 } from "react-native";
@@ -29,38 +29,43 @@ const ResultsShowScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.nameStyle}>
-        {result.name} - {result.rating} Stars
-      </Text>
-      <TouchableOpacity onPress={() => Linking.openURL(`tel:${result.phone}`)}>
-        <Text style={styles.address}>{result.phone}</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() =>
-          Linking.openURL(
-            `maps://app?saddr=100+101&daddr=${result.coordinates.latitude}+${result.coordinates.longitude}`
-          )
-        }
-      >
-        <Text style={styles.address}>
-          {result.location.display_address.join(" ")}
+    <>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.nameStyle}>
+          {result.name} - {result.rating} Stars
         </Text>
-      </TouchableOpacity>
-      <FlatList
-        data={result.photos}
-        keyExtractor={photo => photo}
-        renderItem={({ item }) => {
-          return <Image style={styles.image} source={{ uri: item }} />;
-        }}
-      />
-    </View>
+        <TouchableOpacity
+          onPress={() => Linking.openURL(`tel:${result.phone}`)}
+        >
+          <Text style={styles.address}>{result.phone}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL(
+              `maps://app?saddr=100+101&daddr=${result.coordinates.latitude}+${result.coordinates.longitude}`
+            )
+          }
+        >
+          <Text style={styles.address}>
+            {result.location.display_address.join(" ")}
+          </Text>
+        </TouchableOpacity>
+        <FlatList
+          data={result.photos}
+          keyExtractor={photo => photo}
+          renderItem={({ item }) => {
+            return <Image style={styles.image} source={{ uri: item }} />;
+          }}
+        />
+      </SafeAreaView>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 15
+    marginLeft: 15,
+    flex: 1
   },
   nameStyle: {
     fontWeight: "bold"
