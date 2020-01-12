@@ -33,6 +33,9 @@ const ResultsShowScreen = ({ navigation }) => {
       <Text style={styles.nameStyle}>
         {result.name} - {result.rating} Stars
       </Text>
+      <TouchableOpacity onPress={() => Linking.openURL(`tel:${result.phone}`)}>
+        <Text style={styles.address}>{result.phone}</Text>
+      </TouchableOpacity>
       <TouchableOpacity
         onPress={() =>
           Linking.openURL(
