@@ -36,16 +36,21 @@ const ResultsShowScreen = ({ navigation }) => {
           {result.name} - {result.rating} Stars
         </Text>
 
-        <SafeAreaView style={styles.buttons}>
+        <SafeAreaView style={styles.buttonPositioning}>
           <TouchableOpacity
             onPress={() => Linking.openURL(`tel:${result.phone}`)}
           >
-            <Entypo name="old-phone" size={30}></Entypo>
-            <Text>Call</Text>
+            <Entypo
+              style={{ paddingTop: 1 }}
+              name="old-phone"
+              size={42}
+            ></Entypo>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => Linking.openURL(`${result.url}`)}>
-            <FontAwesome name="yelp" size={30}></FontAwesome>
-            <Text>Yelp</Text>
+          <TouchableOpacity
+            style={styles.yelpButton}
+            onPress={() => Linking.openURL(`${result.url}`)}
+          >
+            <FontAwesome name="yelp" size={36}></FontAwesome>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() =>
@@ -54,9 +59,13 @@ const ResultsShowScreen = ({ navigation }) => {
               )
             }
           >
-            <MaterialIcons name="directions" size={30}></MaterialIcons>
-            <Text>Directions</Text>
+            <MaterialIcons name="directions" size={43}></MaterialIcons>
           </TouchableOpacity>
+        </SafeAreaView>
+        <SafeAreaView style={styles.textPostitioning}>
+          <Text style={{ paddingLeft: 13 }}>Call</Text>
+          <Text style={{ paddingLeft: 22 }}>Yelp</Text>
+          <Text style={{ paddingRight: 15 }}>Directions</Text>
         </SafeAreaView>
         <FlatList
           data={result.photos}
@@ -84,9 +93,18 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginVertical: 11
   },
-  buttons: {
+  buttonPositioning: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginRight: 25,
+    marginTop: 11
+  },
+  textPostitioning: {
     flexDirection: "row",
     justifyContent: "space-around"
+  },
+  yelpButton: {
+    marginTop: 3
   }
 });
 
