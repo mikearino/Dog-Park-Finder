@@ -55,7 +55,7 @@ const ResultsShowScreen = ({ navigation }) => {
           <TouchableOpacity
             onPress={() =>
               Linking.openURL(
-                `maps://app?saddr=100+101&daddr=${result.coordinates.latitude}+${result.coordinates.longitude}`
+                `maps://app?saddr=My+Location&daddr=${result.coordinates.latitude}+${result.coordinates.longitude}`
               )
             }
           >
