@@ -14,7 +14,8 @@ const ResultsDetail = ({ result }) => {
       />
       <Text style={styles.name}>{result.name}</Text>
       <Text>
-        {result.rating} Stars, {result.review_count} Reviews
+        {result.location.city}, {result.location.state} - {result.review_count}{" "}
+        Reviews
       </Text>
     </View>
   );

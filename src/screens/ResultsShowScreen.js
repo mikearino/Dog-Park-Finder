@@ -5,10 +5,11 @@ import {
   StyleSheet,
   FlatList,
   Image,
-  ScrollView,
+  SafeAreaView,
   TouchableOpacity,
   Linking
 } from "react-native";
+import { MaterialIcons, FontAwesome, Entypo } from "@expo/vector-icons";
 import yelp from "../api/yelp";
 
 const ResultsShowScreen = ({ navigation }) => {
@@ -29,33 +30,59 @@ const ResultsShowScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.nameStyle}>{result.name}</Text>
-      <TouchableOpacity
-        onPress={() =>
-          Linking.openURL(
-            `maps://app?saddr=100+101&daddr=${result.coordinates.latitude}+${result.coordinates.longitude}`
-          )
-        }
-      >
-        <Text style={styles.address}>
-          {result.location.display_address.join(" ")}
+    <>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.nameStyle}>
+          {result.name} - {result.rating} Stars
         </Text>
-      </TouchableOpacity>
-      <FlatList
-        data={result.photos}
-        keyExtractor={photo => photo}
-        renderItem={({ item }) => {
-          return <Image style={styles.image} source={{ uri: item }} />;
-        }}
-      />
-    </View>
+
+        <SafeAreaView style={styles.buttonPositioning}>
+          <TouchableOpacity
+            onPress={() => Linking.openURL(`tel:${result.phone}`)}
+          >
+            <Entypo
+              style={{ paddingTop: 1 }}
+              name="old-phone"
+              size={42}
+            ></Entypo>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.yelpButton}
+            onPress={() => Linking.openURL(`${result.url}`)}
+          >
+            <FontAwesome name="yelp" size={36}></FontAwesome>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL(
+                `maps://app?saddr=100+101&daddr=${result.coordinates.latitude}+${result.coordinates.longitude}`
+              )
+            }
+          >
+            <MaterialIcons name="directions" size={43}></MaterialIcons>
+          </TouchableOpacity>
+        </SafeAreaView>
+        <SafeAreaView style={styles.textPostitioning}>
+          <Text style={{ paddingLeft: 13 }}>Call</Text>
+          <Text style={{ paddingLeft: 22 }}>Yelp</Text>
+          <Text style={{ paddingRight: 15 }}>Directions</Text>
+        </SafeAreaView>
+        <FlatList
+          data={result.photos}
+          keyExtractor={photo => photo}
+          renderItem={({ item }) => {
+            return <Image style={styles.image} source={{ uri: item }} />;
+          }}
+        />
+      </SafeAreaView>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 15
+    marginLeft: 15,
+    flex: 1
   },
   nameStyle: {
     fontWeight: "bold"
@@ -64,10 +91,20 @@ const styles = StyleSheet.create({
     height: 200,
     width: 290,
     borderRadius: 5,
-    marginVertical: 10
+    marginVertical: 11
   },
-  address: {
-    color: "blue"
+  buttonPositioning: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginRight: 25,
+    marginTop: 11
+  },
+  textPostitioning: {
+    flexDirection: "row",
+    justifyContent: "space-around"
+  },
+  yelpButton: {
+    marginTop: 3
   }
 });
 
