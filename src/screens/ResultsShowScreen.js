@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Linking
 } from "react-native";
+import { MaterialIcons, FontAwesome, Entypo } from "@expo/vector-icons";
 import yelp from "../api/yelp";
 
 const ResultsShowScreen = ({ navigation }) => {
@@ -34,27 +35,29 @@ const ResultsShowScreen = ({ navigation }) => {
         <Text style={styles.nameStyle}>
           {result.name} - {result.rating} Stars
         </Text>
-        <TouchableOpacity
-          onPress={() => Linking.openURL(`tel:${result.phone}`)}
-        >
-          <Text style={styles.address}>{result.phone}</Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => Linking.openURL(`${result.url}`)}>
-          <Text style={styles.address}>{result.url}</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() =>
-            Linking.openURL(
-              `maps://app?saddr=100+101&daddr=${result.coordinates.latitude}+${result.coordinates.longitude}`
-            )
-          }
-        >
-          <Text style={styles.address}>
-            {result.location.display_address.join(" ")}
-          </Text>
-        </TouchableOpacity>
+        <SafeAreaView style={styles.buttons}>
+          <TouchableOpacity
+            onPress={() => Linking.openURL(`tel:${result.phone}`)}
+          >
+            <Entypo name="old-phone" size={30}></Entypo>
+            <Text>Call</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Linking.openURL(`${result.url}`)}>
+            <FontAwesome name="yelp" size={30}></FontAwesome>
+            <Text>Yelp</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL(
+                `maps://app?saddr=100+101&daddr=${result.coordinates.latitude}+${result.coordinates.longitude}`
+              )
+            }
+          >
+            <MaterialIcons name="directions" size={30}></MaterialIcons>
+            <Text>Directions</Text>
+          </TouchableOpacity>
+        </SafeAreaView>
         <FlatList
           data={result.photos}
           keyExtractor={photo => photo}
@@ -79,10 +82,11 @@ const styles = StyleSheet.create({
     height: 200,
     width: 290,
     borderRadius: 5,
-    marginVertical: 10
+    marginVertical: 11
   },
-  address: {
-    color: "blue"
+  buttons: {
+    flexDirection: "row",
+    justifyContent: "space-around"
   }
 });
 
