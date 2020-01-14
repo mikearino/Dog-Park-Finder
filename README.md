@@ -1,4 +1,4 @@
-# Dog Park Finder
+# Dog Park Finder :dog:
 
 #### An app built in React Native. Enter in any city, and it will return locations of dog parks. Get photos, directions in maps, call the park, or view the Yelp page.
 
