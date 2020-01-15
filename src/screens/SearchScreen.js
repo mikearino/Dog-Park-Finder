@@ -29,8 +29,10 @@ const SearchScreen = () => {
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <ScrollView>
         <ResultsList results={filterResultsByRating(5)} title="5 Stars" />
-        <ResultsList results={filterResultsByRating(4, 4.5)} title="4 Stars" />
-        <ResultsList results={filterResultsByRating(3, 3.5)} title="3 Stars" />
+        <ResultsList results={filterResultsByRating(4.5)} title="4.5 Stars" />
+        <ResultsList results={filterResultsByRating(4)} title="4 Stars" />
+        <ResultsList results={filterResultsByRating(3.5)} title="3.5 Stars" />
+        <ResultsList results={filterResultsByRating(3)} title="3 Stars" />
       </ScrollView>
     </>
   );

@@ -85,13 +85,15 @@ const styles = StyleSheet.create({
     flex: 1
   },
   nameStyle: {
+    paddingTop: 5,
+    fontSize: 17,
     fontWeight: "bold"
   },
   image: {
     height: 200,
-    width: 290,
+    width: 383,
     borderRadius: 5,
-    marginVertical: 11
+    marginVertical: 8
   },
   buttonPositioning: {
     flexDirection: "row",
