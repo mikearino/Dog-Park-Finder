@@ -4,6 +4,7 @@
 
 #### By **Mike Lofgren**
 
+![alt](https://media.giphy.com/media/Ssy6p9BmYjaWZnIChS/giphy.gif)
 ## Description
 
 Dog Park Finder is an app built using React Native. Enter in any city, and it will return locations of dog parks. The results are divided into ratings of 3, 4, and 5 stars. You can press on the dog park locations to view photos, get directions in maps, call the park, or view the Yelp page.
