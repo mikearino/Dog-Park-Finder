@@ -6,7 +6,6 @@ export default () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const searchApi = async keyword => {
-    console.log("hi there");
     try {
       const response = await yelp.get("/search", {
         params: {
@@ -21,9 +20,7 @@ export default () => {
       setErrorMessage("Something went wrong");
     }
   };
-
   // call search api when component is first renderedd
-
   useEffect(() => {
     searchApi("portland");
   }, []);
